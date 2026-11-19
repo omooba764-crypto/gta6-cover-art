@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Frame — GTA-style Cover Maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <h1>VICE FRAME</h1>
+    <p class="tagline">Your photo, made into a multi-panel poster cover. Photos never leave this machine.</p>
+
+    <label class="field">Photos
+      <input id="photos" type="file" accept="image/*" multiple>
+    </label>
+    <div id="thumbs" class="thumbs" aria-label="Your photos"></div>
+    <div class="row">
+      <button id="samplePier" type="button" class="ghost">Sample: Pier</button>
+      <button id="sampleBoulevard" type="button" class="ghost">Sample: Boulevard</button>
+    </div>
+
+    <fieldset class="field">
+      <legend>Layout</legend>
+      <div class="row" id="layouts">
+        <button type="button" data-layout="hero" class="pill active">Hero + 2</button>
+        <button type="button" data-layout="grid" class="pill">Grid 2×2</button>
+        <button type="button" data-layout="strip" class="pill">Strip ×3</button>
+        <button type="button" data-layout="single" class="pill">Single</button>
+      </div>
+    </fieldset>
+
+    <fieldset class="field">
+      <legend>Colour grade</legend>
+      <div class="row" id="grades">
+        <button type="button" data-grade="sunset" class="pill active">Vice Sunset</button>
+        <button type="button" data-grade="neon" class="pill">Neon Nights</button>
+        <button type="button" data-grade="palm" class="pill">Palm Gold</button>
+        <button type="button" data-grade="noir" class="pill">Noir</button>
+      </div>
+    </fieldset>
+
+    <fieldset class="field">
+      <legend>Selected panel</legend>
+      <div class="row" id="panels"></div>
+      <label class="slider">Zoom <input id="zoom" type="range" min="1" max="2.5" step="0.05" value="1"></label>
+      <label class="slider">Move left–right <input id="offsetX" type="range" min="-0.5" max="0.5" step="0.02" value="0"></label>
+      <label class="slider">Move up–down <input id="offsetY" type="range" min="-0.5" max="0.5" step="0.02" value="0"></label>
+      <p class="hint">Tap a photo above to put it in the selected panel. Drag the sliders to crop and position it.</p>
+    </fieldset>
+
+    <label class="field">Title <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
+    <label class="field">Subtitle <input id="subtitle" type="text" maxlength="40" value="VICE CITY"></label>
+
+    <label class="field">Export size
+      <select id="size">
+        <option value="1080x1080">Square 1080 × 1080</option>
+        <option value="1080x1350">Portrait 1080 × 1350</option>
+        <option value="1920x1080">Wide 1920 × 1080</option>
+      </select>
+    </label>
+
+    <button id="export" type="button" class="export">Export PNG</button>
+    <button id="shuffle" type="button" class="ghost">Shuffle layout</button>
+    <p id="status" role="status"></p>
+    <p class="fine">All artwork and lettering here is drawn by this app. No Rockstar Games logo, artwork or font is used.</p>
+  </section>
+  <section class="preview" aria-label="Cover preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
